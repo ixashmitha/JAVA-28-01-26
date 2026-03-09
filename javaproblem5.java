@@ -56,14 +56,14 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 import java.util.stream.*;
-class InvalidStudentDataException extends Exception {
+class InvalidStudentDataException extends Exception {    //custom checked exception
     public InvalidStudentDataException(String message) {
         super(message);
     }
 }
 public class javaproblem5 {
     public static void main(String args[]){
-        Logger logger=Logger.getLogger("StudentDataLogger");
+        Logger logger=Logger.getLogger("StudentDataLogger"); //logger instance
         HashSet<String> studentset=new HashSet<>();
         ArrayList<String> validstudents=new ArrayList<>();
         ArrayList<String> invalidstudents=new ArrayList<>();
@@ -79,6 +79,7 @@ public class javaproblem5 {
                         if(age<18) {
                             throw new InvalidStudentDataException("Age must be 18 or above.");
                         }
+                        else{
                         String validRecord = id + "," + name + "," + age;
                         if(!studentset.contains(validRecord)){
                             studentset.add(validRecord);
@@ -87,7 +88,8 @@ public class javaproblem5 {
                         }else{
                             logger.log(Level.WARNING,"Duplicate student record: {0}",validRecord);
                         }
-                    }else{
+                    }
+                }else{
                         invalidstudents.add(line);
                         logger.log(Level.WARNING,"Invalid format in line: {0}",line);
                     }

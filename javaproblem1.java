@@ -67,7 +67,8 @@ public class javaproblem1 {
         }
         // Display top 5 frequent words
         List<Map.Entry<String,Integer>> list=new ArrayList<>(freqwordcount.entrySet());
-        list.sort((a,b)->b.getValue().compareTo(a.getValue()));
+        //lambda expression to sort the list based on values
+        list.sort((a,b) -> b.getValue().compareTo(a.getValue())); // Sort in descending order of frequency
         System.out.println("Top 5 frequent words:");
         for(int i=0;i<Math.min(5,list.size());i++){
             System.out.println(list.get(i).getKey() + ": " + list.get(i).getValue());
